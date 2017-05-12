@@ -16,10 +16,6 @@ void setup() // Beginn des Setups:
   Serial.begin(9600); // Serielle Verbindung starten (Monitor)
   SPI.begin(); // SPI-Verbindung aufbauen
   mfrc522.PCD_Init(); // Initialisierung des RFID-Empfängers
-
-  Serial.print("Warte auf "); 
-  Serial.print(RFID_Tag);
-  Serial.println();
 }
 
 
