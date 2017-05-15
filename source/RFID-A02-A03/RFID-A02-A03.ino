@@ -6,7 +6,7 @@
 #define SS_PIN 53 // Funduino MEGA Pin 53
 #define RST_PIN 5 // Funduino MEGA Pin 5
 
-char lastRFID_Tag[4];
+Registration registration;
 
 MFRC522 mfrc522(SS_PIN, RST_PIN); // RFID-Empfänger benennen
 
@@ -34,7 +34,7 @@ void loop() // Hier beginnt der Loop-Teil
   if(mfrc522.uid.size == 4) // Es wird angenommen, dass die Tag-Ids 4 Byte gross sind
   {
     char const* rfidReadCode =  mfrc522.uid.uidByte;
-    registerPerson(rfidReadCode, 4);
+    registration.registerPerson(rfidReadCode, 4);
 
     delay(2000); // 2 Sekunden warten, damit die Karte entfernt werden kann
     return;
