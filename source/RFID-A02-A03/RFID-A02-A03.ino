@@ -5,22 +5,27 @@
 
 #include "registration.h"
 
-#define SS_PIN 53 // Funduino MEGA Pin 53
-#define RST_PIN 5 // Funduino MEGA Pin 5
+/// Funduino MEGA Pin 53
+#define SS_PIN 53 
+/// Funduino MEGA Pin 5
+#define RST_PIN 5 
 
+/// Instanz der Registrierung
 Registration registration;
 
-MFRC522 mfrc522(SS_PIN, RST_PIN); // RFID-Empfänger benennen
+/// RFID-Empfänger 
+MFRC522 mfrc522(SS_PIN, RST_PIN); 
 
 
-void setup() // Beginn des Setups:
+/// Beginn des Setups:
+void setup() 
 {
   Serial.begin(9600); // Serielle Verbindung starten (Monitor)
   SPI.begin(); // SPI-Verbindung aufbauen
   mfrc522.PCD_Init(); // Initialisierung des RFID-Empfängers
 }
 
-
+/// Hier beginnt der Loop-Teil
 void loop() // Hier beginnt der Loop-Teil
 {
   if (!mfrc522.PICC_IsNewCardPresent()) // Wenn keine Karte in Reichweite ist...
