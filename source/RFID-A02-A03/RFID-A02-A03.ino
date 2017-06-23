@@ -3,6 +3,10 @@
 #include <SPI.h> // SPI-Bibiothek hinzufügen
 #include <MFRC522.h> // RFID-Bibiothek hinzufügen
 
+//TESTING: #define TEST auskommentieren, wenn nicht getestet werden soll (Normalbetrieb)
+#define TEST
+#include "testDefinitionen.h"
+
 #include "registration.h"
 
 /// Funduino MEGA Pin 53
@@ -21,6 +25,10 @@ MFRC522 mfrc522(SS_PIN, RST_PIN);
 void setup() 
 {
   Serial.begin(9600); // Serielle Verbindung starten (Monitor)
+
+  //TESTING: An der Stelle, wo sich RUNTEST befindet, werden die Tests ausgefuehrt
+  RUNTEST
+  
   SPI.begin(); // SPI-Verbindung aufbauen
   mfrc522.PCD_Init(); // Initialisierung des RFID-Empfängers
 }
